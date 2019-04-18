@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "675565268517",
+    "firebase_url": "https://shortnews-29847.firebaseio.com",
+    "project_id": "shortnews-29847",
+    "storage_bucket": "shortnews-29847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675565268517:android:fcd00f38965d4633",
+        "android_client_info": {
+          "package_name": "com.example.nikhil.Shortnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675565268517-mpona9fusb9hcr2mk6ot5urkkmqnkjiv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnW6f8R5keU3CcMOQZyqBv2o80tZK4DAE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

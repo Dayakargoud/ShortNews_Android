@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="@string/pref_header_categories">
+
+        <CheckBoxPreference android:title="@string/hyderabad_title"
+            android:icon="@drawable/hyderabad"
+            android:key="@string/hyderabad_key"
+            android:defaultValue="false"/>
+        <CheckBoxPreference android:title="@string/health_title"
+            android:icon="@drawable/health"
+            android:key="@string/health_key" android:defaultValue="false"/>
+
+          <CheckBoxPreference android:title="@string/tollywood_title"
+              android:icon="@drawable/tollywood"
+              android:key="@string/tollywood_key" android:defaultValue="false"/>
+
+        <CheckBoxPreference android:title="@string/business_title"
+            android:icon="@drawable/business"
+            android:key="@string/business_key"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference android:title="@string/education_title"
+            android:icon="@drawable/education"
+            android:key="@string/education_key"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference android:title="@string/local_news_title"
+            android:icon="@drawable/local"
+            android:key="@string/local_news_key"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

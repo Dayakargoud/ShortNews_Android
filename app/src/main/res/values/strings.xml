@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Short News</string>
+
+    <string name="apiKey">apiKey=a3a7c65515f0426da9c5e5091c91ad27</string>
+    <!--   admob Ids  -->
+
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/8135179316</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="app_version">current version 1.0.0 (beta)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="news_HeadLines_link"></string>
+
+    <string name="title_activity_about">About</string>
+
+    <string name="pref_header_categories">Categories</string>
+    <string name="pref_header_about_us">About Us</string>
+    <string name="pref_about_us_key">aboutus</string>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_about_app">About App</string>
+
+    <string name="pref_header_privacy_polcies">Privacy policy,Terms and Conditions </string>
+
+    <string name="education_title">Education</string>
+    <string name="education_key">education</string>
+    <string name="business_title">Business</string>
+    <string name="business_key">business</string>
+    <string name="local_news_title">Local News</string>
+    <string name="local_news_key">local</string>
+    <string name="hyderabad_title">Hyderabad</string>
+    <string name="hyderabad_key">hyderabad</string>
+    <string name="tollywood_title">Tollywood</string>
+    <string name="tollywood_key">tollywood</string>
+    <string name="health_title">Health</string>
+    <string name="health_key">health</string>
+
+    <string name="default_value">false</string>
+
+
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include layout="@layout/toolbar_layout"></include>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/mainDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:actionBarSize">
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/mainNavView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#fafafa"
+            app:headerLayout="@layout/nav_header"
+            app:itemTextColor="#000000"
+            app:menu="@menu/navigation_items_menu">
+
+        </android.support.design.widget.NavigationView>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mainViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/mainToolbar">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/mainTablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextAppearance="?android:textAppearanceMedium">
+
+            </android.support.design.widget.TabLayout>
+        </android.support.v4.view.ViewPager>
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

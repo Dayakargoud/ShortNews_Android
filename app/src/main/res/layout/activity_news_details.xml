@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:fitsSystemWindows="true">
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:contentScrim="@color/colorPrimary"
+            android:fitsSystemWindows="true">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_collapseMode="parallax"
+                android:id="@+id/newsDetailsImage"
+                android:src="@drawable/newsimage"
+                android:layout_below="@+id/newsdetailsTitle"
+                android:background="@color/background"
+                android:transitionName="simple_activity_transition"
+                />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/newsDetailsToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/ToolbarColoredBackArrow"
+                app:popupTheme="@style/AppTheme"
+                android:elevation="4dp"
+                app:layout_collapseMode="pin"
+                android:minHeight="?android:attr/actionBarSize">
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_below="@id/newsDetailsToolbar"
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
+
+      <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+       <TextView
+       android:id="@+id/newsdetailsTitle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+           android:layout_margin="4dp"
+           android:layout_below="@+id/newsPublishedAtDetails"
+           android:textColor="@color/colorAccent"
+       android:text="title"
+       android:textStyle="bold"
+       android:textAppearance="@style/TextAppearance.AppCompat.Title"
+
+       />
+
+    <TextView
+        android:id="@+id/newsPublishedAtDetails"
+        android:layout_margin="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:layout_alignParentRight="true"
+        android:text="published At"
+        />
+
+    <TextView
+        android:id="@+id/newsdescDetails"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/newsdetailsTitle"
+        android:text="description"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/newsContentDetails"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/newsdescDetails"
+        android:text="Read Full Article At: "
+        android:textStyle="bold"
+        android:layout_margin="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <WebView
+        android:id="@+id/newsurl"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/newsContentDetails"
+        android:layout_margin="2dp"
+        android:layout_height="wrap_content">
+
+    </WebView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_networkweb"
+        android:layout_width="100dp"
+        android:layout_margin="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newsdescDetails"
+        android:layout_centerInParent="true"
+        app:lottie_fileName="loading.json"
+        android:layout_marginBottom="4dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+</RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
