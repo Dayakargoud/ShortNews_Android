@@ -29,7 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.MyHolder> {
     // A menu item view type.
     private static final int MENU_ITEM_VIEW_TYPE = 0;
 
@@ -42,9 +42,9 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private AdLoader adloader;
 
     public Context mContext;
-  public ArrayList<Object> arrayList=new ArrayList<Object>();
+  public ArrayList<NewsData> arrayList=new ArrayList<NewsData>();
 
-    public MainRecyclerAdapter(Context mContext, ArrayList<Object> arrayList) {
+    public MainRecyclerAdapter(Context mContext, ArrayList<NewsData> arrayList) {
         this.mContext = mContext;
         this.arrayList = arrayList;
         this.mNativeAd=mNativeAd;
@@ -53,27 +53,27 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainRecyclerAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
-//        View view= LayoutInflater.from(mContext).inflate(R.layout.recyclerview_single_item,parent,false);
+        View view= LayoutInflater.from(mContext).inflate(R.layout.recyclerview_single_item,parent,false);
+
+        return new MyHolder(view);
+
 //
-//        return new MyHolder(view);
-
-
-        switch (viewType) {
-
-            case UNIFIED_NATIVE_AD_VIEW_TYPE:
-                View unifiedNativeLayoutView = LayoutInflater.from(mContext).inflate(R.layout.ad_unified, parent, false);
-
-
-                return new Ad_ViewHolder(unifiedNativeLayoutView);
-            case MENU_ITEM_VIEW_TYPE:
-            default:
-
-                View menuItemLayoutView =  LayoutInflater.from(mContext).inflate(R.layout.recyclerview_single_item,parent,false);
-                return new MyHolder(menuItemLayoutView);
-        }
+//        switch (viewType) {
+//
+//            case UNIFIED_NATIVE_AD_VIEW_TYPE:
+//                View unifiedNativeLayoutView = LayoutInflater.from(mContext).inflate(R.layout.ad_unified, parent, false);
+//
+//
+//                return new Ad_ViewHolder(unifiedNativeLayoutView);
+//            case MENU_ITEM_VIEW_TYPE:
+//            default:
+//
+//                View menuItemLayoutView =  LayoutInflater.from(mContext).inflate(R.layout.recyclerview_single_item,parent,false);
+//                return new MyHolder(menuItemLayoutView);
+//        }
 
 
     }
@@ -82,73 +82,81 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
-//
-//        NewsData newsData=arrayList.get(position);
-//        holder.title.setText(newsData.getTitle());
-//
-//          String urlofImage=newsData.getUrlToImage();
-//          if(urlofImage==null){
-//                  try{
-//                      Picasso.get().load(R.drawable.newsimage).placeholder(R.drawable.loadingcolor).fit().into(holder.newsImage);
-//
-//                  }catch (Exception e){
-//                      Log.e("MainREcyclerHolder",e.getMessage());
-//                  }
-//
-//          }
-//      Picasso.get().load(newsData.getUrlToImage()).fit().into(holder.newsImage);
-//
+    public void onBindViewHolder(@NonNull final MainRecyclerAdapter.MyHolder holder, final int position) {
 
-        int viewType = getItemViewType(position);
-        switch (viewType) {
-            case UNIFIED_NATIVE_AD_VIEW_TYPE:
+        NewsData newsData=arrayList.get(position);
+        holder.title.setText(newsData.getTitle());
 
-               // UnifiedNativeAd nativeAd = (UnifiedNativeAd) mNativeAd.get(position);
-//
-//               populateNativeAdView(mNativeAd.get(position), ((Ad_ViewHolder) holder).getAdView());
-//                System.out.println("adapter recived ads "+mNativeAd);
-                final View v=((Ad_ViewHolder) holder).getAdView();
+          String urlofImage=newsData.getUrlToImage();
+          if(urlofImage==null){
+                  try{
+                      Picasso.get().load(R.drawable.newsimage).placeholder(R.drawable.loadingcolor).fit().into(holder.newsImage);
 
+                  }catch (Exception e){
+                      Log.e("MainREcyclerHolder",e.getMessage());
+                  }
 
-                AdLoader.Builder builder = new AdLoader.Builder(mContext, mContext.getString(R.string.ad_unit_id));
-                      adloader=  builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
-                            @Override
-                            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
-
-                                populateNativeAdView(unifiedNativeAd, ((Ad_ViewHolder) holder).getAdView());
-
-                            }
-                        }).build();
-                adloader.loadAds(new AdRequest.Builder().build(),1);
-
-
-                break;
-            case MENU_ITEM_VIEW_TYPE:
-                // fall through
-            default:
-
-                MyHolder menuItemHolder = (MyHolder) holder;
-               // MenuItem menuItem = (MenuItem) arrayList.get(position);
-
-
-                NewsData newsData= (NewsData) arrayList.get(position);
-                menuItemHolder.title.setText(newsData.getTitle());
-
-                if(!TextUtils.isEmpty(newsData.getUrlToImage())){
+          }
+        if(!TextUtils.isEmpty(newsData.getUrlToImage())){
                     try{
-                        Picasso.get().load(newsData.getUrlToImage()).placeholder(R.drawable.newsimage).fit().into(menuItemHolder.newsImage);
+                        Picasso.get().load(newsData.getUrlToImage()).placeholder(R.drawable.newsimage).fit().into(holder.newsImage);
 
-                    }catch (Exception e){
-                        Log.e("MainREcyclerHolder",e.getMessage());
-                        Picasso.get().load(R.drawable.newsimage).fit().into(menuItemHolder.newsImage);
+                    }catch (Exception e) {
+                        Log.e("MainREcyclerHolder", e.getMessage());
+                        Picasso.get().load(R.drawable.newsimage).fit().into(holder.newsImage);
+                    }}
 
-                    }
+//
 
-                }
+//        int viewType = getItemViewType(position);
+//        switch (viewType) {
+//            case UNIFIED_NATIVE_AD_VIEW_TYPE:
+//
+//               // UnifiedNativeAd nativeAd = (UnifiedNativeAd) mNativeAd.get(position);
+////
+////               populateNativeAdView(mNativeAd.get(position), ((Ad_ViewHolder) holder).getAdView());
+////                System.out.println("adapter recived ads "+mNativeAd);
+//                final View v=((Ad_ViewHolder) holder).getAdView();
+//
+//
+//                AdLoader.Builder builder = new AdLoader.Builder(mContext, mContext.getString(R.string.ad_unit_id));
+//                      adloader=  builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+//                            @Override
+//                            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+//
+//                                populateNativeAdView(unifiedNativeAd, ((Ad_ViewHolder) holder).getAdView());
+//
+//                            }
+//                        }).build();
+//                adloader.loadAds(new AdRequest.Builder().build(),1);
+//
+//
+//                break;
+//            case MENU_ITEM_VIEW_TYPE:
+//                // fall through
+//            default:
+//
+//                MyHolder menuItemHolder = (MyHolder) holder;
+//               // MenuItem menuItem = (MenuItem) arrayList.get(position);
+//
+//
+//                NewsData newsData= (NewsData) arrayList.get(position);
+//                menuItemHolder.title.setText(newsData.getTitle());
+//
+//                if(!TextUtils.isEmpty(newsData.getUrlToImage())){
+//                    try{
+//                        Picasso.get().load(newsData.getUrlToImage()).placeholder(R.drawable.newsimage).fit().into(menuItemHolder.newsImage);
+//
+//                    }catch (Exception e){
+//                        Log.e("MainREcyclerHolder",e.getMessage());
+//                        Picasso.get().load(R.drawable.newsimage).fit().into(menuItemHolder.newsImage);
+//
+//                    }
+//
+//                }
 
 
-        }
+   //     }
 
 
 
@@ -163,21 +171,21 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     /**
      * Determines the view type for the given position.
      */
-    @Override
-    public int getItemViewType(int position) {
-
-//        Object recyclerViewItem=arrayList.get(position);
-//        if(recyclerViewItem instanceof UnifiedNativeAd){
+//    @Override
+//    public int getItemViewType(int position) {
 //
-//
-        //    return UNIFIED_NATIVE_AD_VIEW_TYPE;
-        //}
-        if(position%5==0&position!=0)
-        {
-            return UNIFIED_NATIVE_AD_VIEW_TYPE;
-        }
-        return MENU_ITEM_VIEW_TYPE;
-    }
+////        Object recyclerViewItem=arrayList.get(position);
+////        if(recyclerViewItem instanceof UnifiedNativeAd){
+////
+////
+//        //    return UNIFIED_NATIVE_AD_VIEW_TYPE;
+//        //}
+//        if(position%5==0&position!=0)
+//        {
+//            return UNIFIED_NATIVE_AD_VIEW_TYPE;
+//        }
+//        return MENU_ITEM_VIEW_TYPE;
+//    }
 
 
     public class MyHolder extends RecyclerView.ViewHolder{

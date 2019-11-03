@@ -21,7 +21,9 @@
         </activity>
         <activity
             android:name="com.example.nikhil.Shortnews.MainActivity"
-            android:theme="@style/MyTheme">
+            android:theme="@style/MyTheme"
+            android:launchMode="singleTop"
+            >
 
         </activity>
         <activity android:name="com.example.nikhil.Shortnews.NewsDetailsActivity" />

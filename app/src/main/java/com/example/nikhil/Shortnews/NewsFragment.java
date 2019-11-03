@@ -13,6 +13,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,7 +61,7 @@ import java.util.List;
 public class NewsFragment extends Fragment {
     private static  int NEWS_URL_ID=1;
     private RecyclerView mRecyclerView;
-    private ArrayList<Object> arrayList=new ArrayList<>();
+    private ArrayList<NewsData> arrayList=new ArrayList<>();
     MainRecyclerAdapter adapter;
     public static  String NEWS_URL=null;
     private String LOG_TAG="NewsFragment.class";
@@ -70,8 +72,12 @@ public class NewsFragment extends Fragment {
     private int NUMBER_OF_ADS=5;
     private SwipeRefreshLayout refreshLayout;
     private AdLoader adloader;
-    private ArrayList<Object> customData=new ArrayList<>();
+    private ArrayList<NewsData> customData=new ArrayList<>();
     private  String ARRAYKEY="myarray";
+    private static final int LOADER_ID=14;
+    private  ArrayList<NewsData> cachedata=new ArrayList<>();
+
+
 
     private List<UnifiedNativeAd> mNativeAd=new ArrayList<>();
     private List<UnifiedNativeAd> mNativeAds=new ArrayList<>();
@@ -269,6 +275,9 @@ public class NewsFragment extends Fragment {
 
 
 
+
+
+
     public class BackgroundTask extends AsyncTask<String,Void,String> {
 
         String xmltitle,desc,imageUrl,publishedtime,linkpage;
@@ -440,7 +449,7 @@ public class NewsFragment extends Fragment {
 
         private String xmlParsing(String urltext) throws XmlPullParserException, IOException {
 
-            ArrayList<Object> xmldata=new ArrayList<Object>();
+            ArrayList<NewsData> xmldata=new ArrayList<>();
             String url=new String(urltext);
 
             try{
@@ -551,23 +560,31 @@ public class NewsFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        //outState.putParcelableArrayList("key",new ArrayList<Object>(arrayList));
+       // outState.putParcelableArrayList("key",customData);
 
-      //  getSupportFragmentManager().putFragment(outState, "myFragmentName", mContent);
 
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+ if(savedInstanceState!=null){
 
-        setRetainInstance(true);
+ }
+
 
 
 
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 }

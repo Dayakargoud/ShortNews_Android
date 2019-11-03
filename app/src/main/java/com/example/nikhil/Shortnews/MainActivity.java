@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -195,17 +196,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onResume();
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
         mPagerAdapter.notifyDataSetChanged();
-        if (getSupportFragmentManager().findFragmentById(mPager.getCurrentItem()) != null) {
-            getSupportFragmentManager().findFragmentById(mPager.getCurrentItem()).getRetainInstance();
-            Toast.makeText(this, "retained", Toast.LENGTH_SHORT).show();
 
-        }
 
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
 
 
     }
